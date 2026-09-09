@@ -1,6 +1,1 @@
-fastmcp
-uvicorn
-requests
-pydantic
-goodmem-client
-asyncpg
+-e .
