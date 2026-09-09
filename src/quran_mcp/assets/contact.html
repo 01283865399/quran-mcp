@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>تواصل معنا — قراني ديني</title>
+  <meta name="description" content="تواصل معنا عبر الهاتف أو البريد الإلكتروني للحصول على المساعدة أو المعلومات حول قراني ديني.">
+  <link rel="icon" href="/icon.png?v=2" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cascadia+Code:wght@400;700&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,300;1,6..72,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,500;1,8..60,300;1,8..60,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/shared-theme.css">
+  <style>
+    body {
+      font-family: 'Source Serif 4', Georgia, serif;
+      font-size: 16px;
+      line-height: 1.75;
+    }
+
+    .container {
+      position: relative;
+      z-index: 1;
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 36px 28px 80px;
+    }
+
+    .top-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-bottom: 22px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 30px;
+    }
+
+    .page-header {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 28px 24px;
+      margin-bottom: 20px;
+    }
+
+    .eyebrow {
+      font-family: 'Cascadia Code', monospace;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--green);
+      display: inline-block;
+      margin-bottom: 12px;
+    }
+
+    h1 {
+      font-family: 'Newsreader', Georgia, serif;
+      font-size: clamp(2.2rem, 4vw, 3.4rem);
+      font-weight: 500;
+      letter-spacing: -0.03em;
+      color: var(--text-heading);
+      margin: 0;
+      line-height: 1.1;
+    }
+
+    .lead {
+      color: var(--muted);
+      margin-top: 16px;
+      font-size: 1.06rem;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 18px;
+      margin-top: 24px;
+    }
+
+    .contact-card {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 20px 18px;
+      border-radius: 18px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      text-decoration: none;
+      color: var(--text);
+      min-height: 128px;
+    }
+
+    .icon {
+      display: grid;
+      place-items: center;
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
+      background: rgba(74, 222, 128, 0.08);
+      border: 1px solid rgba(74, 222, 128, 0.18);
+      font-size: 1.5rem;
+    }
+
+    .copy {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .copy small {
+      color: var(--muted);
+      font-family: 'Cascadia Code', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .copy strong {
+      color: var(--text-heading);
+      font-size: 1.08rem;
+      word-break: break-word;
+    }
+
+    section {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 24px 22px;
+      margin-top: 20px;
+    }
+
+    section h2 {
+      font-family: 'Newsreader', Georgia, serif;
+      font-size: 1.5rem;
+      font-weight: 500;
+      margin: 0 0 10px;
+      color: var(--text-heading);
+    }
+
+    p {
+      color: var(--muted);
+      margin: 0 0 12px;
+    }
+
+    ul {
+      margin: 0;
+      padding-right: 18px;
+      color: var(--muted);
+      line-height: 1.9;
+    }
+
+    footer {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 20px 24px;
+      margin-top: 24px;
+      text-align: center;
+      color: var(--muted);
+    }
+
+    @media (max-width: 720px) {
+      .container {
+        padding: 24px 16px 60px;
+      }
+
+      .page-header,
+      section,
+      footer {
+        border-radius: 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="grid-bg"></div>
+<div class="glow glow-1"></div>
+<div class="glow glow-2"></div>
+
+<div class="container">
+  <div class="top-bar">
+    <a href="/" class="back-link">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10 3L5 8l5 5"/></svg>
+      العودة إلى الصفحة الرئيسية
+    </a>
+  </div>
+
+  <header class="page-header">
+    <span class="eyebrow">Contact</span>
+    <h1>تواصل معنا</h1>
+    <p class="lead">يمكنك التواصل معنا مباشرة للاستفسارات، الطلبات، أو التعاون في مشاريع قرآنية وأدوات موثقة.</p>
+  </header>
+
+  <div class="contact-grid">
+    <a class="contact-card" href="tel:01283865399">
+      <span class="icon">📞</span>
+      <span class="copy">
+        <small>الهاتف</small>
+        <strong>01283865399</strong>
+      </span>
+    </a>
+
+    <a class="contact-card" href="mailto:dyba8561@gmail.com">
+      <span class="icon">✉️</span>
+      <span class="copy">
+        <small>البريد الإلكتروني</small>
+        <strong>dyba8561@gmail.com</strong>
+      </span>
+    </a>
+
+    <a class="contact-card" href="/">
+      <span class="icon">💬</span>
+      <span class="copy">
+        <small>الموقع</small>
+        <strong>قراني ديني</strong>
+      </span>
+    </a>
+  </div>
+
+  <section>
+    <h2>معلومات التواصل</h2>
+    <p>نرحب بالاستفسارات المتعلقة بالخدمة، المساعدة التقنية، أو التعاون في تنفيذ تجارب قرآنية جديدة.</p>
+    <ul>
+      <li>للأعمال أو الاستفسارات الرسمية: البريد الإلكتروني أو الهاتف المرفق.</li>
+      <li>للاستفسارات التقنية: يمكنك وصف المشكلة والخدمة التي تريدها بشكل واضح.</li>
+      <li>للعمل المشترك: أرسل تفاصيل المشروع وهدفه مع الوقت المتوقع للتنفيذ.</li>
+    </ul>
+  </section>
+
+  <footer>
+    <p>المالك وصانع الموقع: أحمد ديب</p>
+    <p>قراني ديني · منصة قرآنية موثقة ومصممة لخدمة الذكاء الاصطناعي</p>
+  </footer>
+</div>
+</body>
+</html>
