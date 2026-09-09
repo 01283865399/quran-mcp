@@ -75,7 +75,7 @@ class ServerSettings(BaseModel):
 
     port: int = Field(description="HTTP listen port (source of truth: config.yml)")
     profile: Literal["public", "dev", "full"] = Field(
-        default="full",
+        default="public",
         description="Named profile: public (ga only), dev (ga+preview+internal), full (all)",
     )
     expose_tags: Annotated[list[str] | None, NoDecode] = Field(
