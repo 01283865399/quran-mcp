@@ -1,1 +1,1 @@
-{"buildCommand": "mkdir -p public && cp src/quran_mcp/assets/landing.html public/index.html", "outputDirectory": "public", "cleanUrls": true, "rewrites": [{"source": "/(.*)", "destination": "/index.html"}]}
+{"buildCommand": "cd frontend && npm install && npm run build", "outputDirectory": "frontend/dist", "cleanUrls": true, "rewrites": [{"source": "/(.*)", "destination": "/index.html"}]}
