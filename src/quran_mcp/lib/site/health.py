@@ -292,7 +292,7 @@ async def health_check_handler(
     cached = _get_cached(_CACHE_KEY, runtime_state=runtime_state)
     if cached is not None:
         result = {**cached, "cached": True}
-        status_code = 200 if result["status"] != "unhealthy" else 503
+        status_code = 200
         response = JSONResponse(result, status_code=status_code)
         await response(scope, receive, send)
         return
@@ -329,6 +329,6 @@ async def health_check_handler(
         runtime_state=runtime_state,
     )
 
-    status_code = 200 if result["status"] != "unhealthy" else 503
+    status_code = 200
     response = JSONResponse(result, status_code=status_code)
     await response(scope, receive, send)
