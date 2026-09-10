@@ -1,1 +1,1 @@
-{"version": 2, "builds": [{"src": "frontend/package.json", "use": "@vercel/static-build", "config": {"distDir": "../src/quran_mcp/assets"}}], "routes": [{"src": "/(.*)", "dest": "/src/quran_mcp/assets/$1"}]}
+{"version": 2, "builds": [{"src": "frontend/package.json", "use": "@vercel/static-build", "config": {"distDir": "../src/quran_mcp/assets"}}], "routes": [{"src": "/(.*)", "dest": "/src/quran_mcp/assets/landing.html"}]}
