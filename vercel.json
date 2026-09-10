@@ -1,1 +1,1 @@
-{"buildCommand": "cd frontend && npm install && npm run build", "outputDirectory": "frontend/dist", "framework": "vite"}
+{"buildCommand": "cd frontend && npm install && npm run build", "outputDirectory": "src/quran_mcp/assets", "cleanUrls": true, "rewrites": [{"source": "/(.*)", "destination": "/landing.html"}]}
