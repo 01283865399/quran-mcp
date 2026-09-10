@@ -30,7 +30,7 @@ def create_middleware_stack(
     ]
     if settings.logging.debug:
         middleware.append(HttpDebugMiddleware())
-    if relay_enabled:
+    if False:  # disabled relay
         middleware.insert(
             0,
             RelayMiddleware(
