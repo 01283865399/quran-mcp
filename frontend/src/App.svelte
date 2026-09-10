@@ -118,7 +118,7 @@
   <!-- ═══ Nav ═══ -->
   <nav class="top-nav">
     <div class="logo">قراني <span class="ai">ديني</span></div>
-    <a href="https://mcp.quran.ai" class="nav-home">قراني ديني</a>
+    <a href="https://mcp.quran.ai" class="nav-home">Rushd — رُشد</a>
     <div class="nav-links">
       <a href="/documentation">الوثائق</a>
       <span class="nav-sep">&middot;</span>
@@ -136,8 +136,8 @@
 
   <!-- ═══ Hero ═══ -->
   <div class="header">
-    <img src="/screenshots/header-icon.png" alt="قراني ديني" class="header-icon">
-    <h1>قراني ديني<br><em>محتوى قرآني موثّق ومبني على مصدر واضح.</em></h1>
+    <img src="/screenshots/header-icon.png" alt="Rushd — رُشد" class="header-icon">
+    <h1>Rushd — رُشد<br><em>محتوى قرآني موثّق ومبني على مصدر واضح.</em></h1>
   </div>
 
   <!-- ═══ Contrast ═══ -->

@@ -1,6 +1,6 @@
 # Quranic Website Frontend
 
-This folder contains the user-facing Arabic religious website for قراني ديني.
+This folder contains the user-facing Arabic religious website for Rushd — رُشد.
 
 ## Development
 

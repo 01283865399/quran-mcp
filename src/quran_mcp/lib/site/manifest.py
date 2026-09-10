@@ -49,6 +49,9 @@ from quran_mcp.lib.documentation.runtime import (
 )
 
 routes: dict[str, dict[str, dict[str, Any]]] = {
+    "redirects": {
+        "/quran": "/mushaf",
+    },
     "static": {
         "/icon.png": {"file": asset_path("icons/icon.png"), "type": "image/png"},
         "/icon.svg": {"file": asset_path("icons/icon.svg"), "type": "image/svg+xml", "required": False},
@@ -58,7 +61,7 @@ routes: dict[str, dict[str, dict[str, Any]]] = {
     },
     "pages": {
         "/": {"file": asset_path("landing.html"), "headers": {"Cache-Control": "no-store"}},
-        "/quran": {"file": asset_path("landing.html"), "headers": {"Cache-Control": "no-store"}},
+        "/favorites": {"file": asset_path("landing.html"), "headers": {"Cache-Control": "no-store"}},
         "/search": {"file": asset_path("landing.html"), "headers": {"Cache-Control": "no-store"}},
         "/tafsir": {"file": asset_path("landing.html"), "headers": {"Cache-Control": "no-store"}},
         "/hadith": {"file": asset_path("landing.html"), "headers": {"Cache-Control": "no-store"}},
@@ -113,6 +116,8 @@ def validate_required_assets() -> list[str]:
     missing: list[str] = []
 
     for classification, entries in routes.items():
+        if classification == "redirects":
+            continue
         for path, entry in entries.items():
             if not entry.get("required", True):
                 continue

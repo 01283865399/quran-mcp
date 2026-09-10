@@ -14,7 +14,7 @@ from pathlib import Path
 from collections.abc import Awaitable, Callable
 from typing import Any
 
-from starlette.responses import FileResponse, HTMLResponse, JSONResponse, PlainTextResponse, Response
+from starlette.responses import FileResponse, HTMLResponse, JSONResponse, PlainTextResponse, RedirectResponse, Response
 
 from fastmcp import FastMCP
 
@@ -48,10 +48,12 @@ async def handle_public_route(
     1. Static files (exact path match)
     2. Downloads (exact path match, Content-Disposition: attachment)
     3. Directory mounts (longest prefix match)
-    4. HTML pages (exact path match, except "/" which has accept-header logic)
-    5. /documentation/data.json (generated, not in manifest)
-    6. /.health (generated, not in manifest)
-    7. Landing page at "/" (only for browser requests, not SSE/MCP)
+    4. Redirects (exact path match)
+    5. HTML pages (exact path match, except "/" which has accept-header logic)
+    6. /documentation/data.json (generated, not in manifest)
+    7. Browser religious API routes
+    8. /.health (generated, not in manifest)
+    9. Landing page at "/" (only for browser requests, not SSE/MCP)
 
     Generated routes are not in routes because they aren't
     asset-backed — they produce dynamic responses at request time.
@@ -86,7 +88,16 @@ async def handle_public_route(
                 await response(scope, receive, send)
                 return True
 
-    # 4. HTML pages (skip "/" — handled as landing page below)
+    # 4. Canonical browser redirects.
+    redirect_target = routes.get("redirects", {}).get(path)
+    if redirect_target is not None:
+        query_string = scope.get("query_string", b"").decode("latin-1")
+        location = redirect_target + (f"?{query_string}" if query_string else "")
+        response = RedirectResponse(url=location, status_code=308)
+        await response(scope, receive, send)
+        return True
+
+    # 5. HTML pages (skip "/" — handled as landing page below)
     if path != "/":
         entry = routes.get("pages", {}).get(path)
         if entry is not None:
@@ -120,6 +131,15 @@ async def handle_public_route(
         landing = routes.get("pages", {}).get("/")
         if landing is not None:
             logger.info("%s / (landing) from %s", method, _real_ip(scope))
+            await _page_response(scope, receive, send, entry=landing)
+            return True
+
+    # Unknown browser paths still receive the shell so the frontend can render
+    # its branded Not Found state instead of exposing a raw server 404 page.
+    if _should_serve_browser_shell(scope):
+        landing = routes.get("pages", {}).get("/")
+        if landing is not None:
+            logger.info("%s %s (shell fallback) from %s", method, path, _real_ip(scope))
             await _page_response(scope, receive, send, entry=landing)
             return True
 
@@ -366,4 +386,15 @@ def _should_serve_landing(scope: "Scope") -> bool:
             accept = header_value.decode("latin-1", errors="replace")
             if "text/event-stream" in accept:
                 return False
+    return True
+
+
+def _should_serve_browser_shell(scope: "Scope") -> bool:
+    """Serve the Svelte shell for unknown browser document requests."""
+    if scope["method"] not in {"GET", "HEAD"}:
+        return False
+    for header_name, header_value in scope.get("headers", []):
+        if header_name == b"accept":
+            accept = header_value.decode("latin-1", errors="replace")
+            return "text/event-stream" not in accept
     return True
